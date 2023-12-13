@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz Aplikacyjny</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <form action="/submit-application" method="post" enctype="multipart/form-data">
+            <h2>Formularz Aplikacyjny</h2>
+
+            <div class="form-group">
+                <label for="resume-upload">Prześlij swoje CV w formacie PDF:</label>
+                <input type="file" id="resume-upload" name="resume" accept=".pdf" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expected-salary">Oczekiwane wynagrodzenie:</label>
+                <input type="number" id="expected-salary" name="expectedSalary" min="0" step="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience-level">Poziom doświadczenia (w latach):</label>
+                <input type="range" id="experience-level" name="experienceLevel" min="0" max="40" step="1">
+                <output id="experience-output" for="experience-level">0</output> lat
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Aplikuj</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Skrypt do aktualizacji wyświetlania wartości suwaka
+        const rangeInput = document.getElementById('experience-level');
+        const rangeOutput = document.getElementById('experience-output');
+        rangeInput.addEventListener('input', function() {
+            rangeOutput.value = rangeInput.value;
+        });
+    </script>
+</body>
+</html>
